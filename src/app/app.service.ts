@@ -21,7 +21,11 @@ export class AppService {
     this.http
       .get('user', { headers: headers })
       .subscribe((response) => {
-        if (response['name']) {
+        // set type `key of response` to parse string to key
+        type responseKey = keyof typeof response;
+
+        // use name as key not string
+        if (response["name" as responseKey]) {
           this.authenticated = true;
         } else {
           this.authenticated = false;
