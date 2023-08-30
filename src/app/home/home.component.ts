@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AppService } from '../app.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -11,30 +11,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class HomeComponent {
   title = "Home";
 
-  greeting = {
-    id: 0,
-    content: {}
-  };
+  constructor(protected user: LoginService, private http: HttpClient) {
 
-  constructor(private app: AppService, private http: HttpClient) {
-    http
-      .get("api/auth/token")
-      .subscribe((data) => {
-        type dataKey = keyof typeof data;
-        const token = data["token" as dataKey];
-
-        http
-          .get(
-            'http://localhost:8080/home/daily-quote',
-            { headers: new HttpHeaders().set('X-Auth-Token', token.toString()) }
-          )
-          .subscribe(data => this.greeting.content = data);
-
-
-      }, () => { })
   }
 
   authenticated() {
-    return this.app.authenticated;
+    return this.user.isUserLoggedIn();
   }
 }

@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { AppService } from './app.service';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { finalize, subscribeOn, take } from 'rxjs';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -15,20 +12,11 @@ export class AppComponent {
 
   greeting = { 'id': 'XXX', 'content': 'Hello World' };
 
-  constructor(private app: AppService, private http: HttpClient, private router: Router) {
-    this.app.authenticate(undefined, undefined);
-  }
+  constructor(private user: LoginService) {}
 
   logout() {
-    this.http
-      .post('logout', {})
-      .pipe(
-        finalize(() => {
-          this.app.authenticated = false;
-          this.router.navigateByUrl('/login');
-        })
-      )
-      .subscribe();
+    this.user.logout();
+    window.location.reload();
   }
 }
 
