@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +11,15 @@ import { LoginService } from '../services/login.service';
 export class HomeComponent {
   title = "Home";
 
-  constructor(protected user: LoginService, private http: HttpClient) {
+  constructor(protected user: LoginService, private router: Router) {
 
   }
 
   authenticated() {
     return this.user.isUserLoggedIn();
+  }
+
+  goTo(url: string) {
+    this.router.navigate([url]);
   }
 }

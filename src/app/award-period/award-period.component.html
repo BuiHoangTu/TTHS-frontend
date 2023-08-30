@@ -1,0 +1,39 @@
+<h2>award-period works!</h2>
+
+<mat-form-field>
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+
+<button mat-raised-button color="primary" (click)="searchAwardLevel()">Search</button>
+
+<div class="data-container">
+  <p>Date of Apply: {{ data.dateOfApply }}</p>
+  <table>
+    <tr>
+      <th>Achievement</th>
+      <th>Prize Value</th>
+    </tr>
+    <tr *ngFor="let level of data.awardLevels; let i = index">
+      <td>{{ level.achievement }}</td>
+      <td>{{ level.prizeValue }}</td>
+      <td>
+        <button (click)="deleteAwardLevel(i)"> Delete </button>
+      </td>
+    </tr>
+
+    <tr>
+      <td><input [(ngModel)]="newAchievement"></td>
+      <td><input [(ngModel)]="newValue"></td>
+      <td>
+        <button (click)="addAwardLevel()">Add New Level</button>
+      </td>
+    </tr>
+  </table>
+
+  <button class="horizontal-button" (click)="addAwardLevels()">Add</button>
+</div>

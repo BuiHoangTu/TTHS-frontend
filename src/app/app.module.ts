@@ -14,11 +14,18 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { LoginService } from './services/login.service';
+import { AwardPeriodComponent } from './award-period/award-period.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from "@angular/material/datepicker"
+import { MatInputModule } from "@angular/material/input"
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: "award-period", component: AwardPeriodComponent }
 ];
 
 @NgModule({
@@ -30,14 +37,19 @@ const routes: Routes = [
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    AwardPeriodComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

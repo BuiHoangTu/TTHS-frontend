@@ -2,6 +2,13 @@
 <div [hidden]="!authenticated()">
   <p>Hello {{user.getUsername()}}</p>
   <p>You may {{user.getAcceses()}}</p>
+
+  <div class="horizontal-div">
+    <button class="item" (click)="goTo('award-period')">Award For Achievement</button>
+    <button class="item" (click)="goTo('award-period')">Award For Achievement</button>
+    <button class="item" (click)="goTo('award-period')">Award For Achievement</button>
+    <button class="item" (click)="goTo('award-period')">Award For Achievement</button>
+  </div>
 </div>
 <div [hidden]="authenticated()">
   <p>Login to see your greeting</p>
