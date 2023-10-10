@@ -8,17 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { BoardUserComponent } from './board-user/board-user.component';
 import { LoginService } from './services/login.service';
 import { AwardPeriodComponent } from './award-period/award-period.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from "@angular/material/datepicker"
 import { MatInputModule } from "@angular/material/input"
 import { MatNativeDateModule } from '@angular/material/core';
+import { PrizePeriodComponent } from './prize-period/prize-period.component';
 
 
 const routes: Routes = [
@@ -33,12 +29,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
-    ProfileComponent,
-    BoardAdminComponent,
-    BoardModeratorComponent,
-    BoardUserComponent,
-    AwardPeriodComponent
+    AwardPeriodComponent,
+    PrizePeriodComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { environment } from '../environment';
-import { LoginComponent } from '../login/login.component';
 import { LoginService } from '../services/login.service';
 
 @Component({
